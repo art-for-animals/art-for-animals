@@ -582,7 +582,7 @@ body::before{display:none}
 
 <section class="final"><div class="in"><div class="am">Art for Animals <svg class="ic"><use href="#h17"/></svg> You</div><p style="font-size:22px">Let’s make change together.</p><div class="fbtns"><a class="btn lt" href="#request">REQUEST A PORTRAIT</a></div></div></section>
 <footer><div class="in">
-  <div class="fl"><span class="logo am"><img data-k="logo" alt="" class="lg">Art for Animals</span><span>Art for Animals, from the mountains of Colorado</span></div>
+  <div class="fl"><span class="logo am"><img data-k="logo" alt="" class="lg">Art for Animals</span><span>&copy; <span class="cyr">2026</span> Art for Animals, from the mountains of Colorado</span></div>
   <span class="soc"><a href="https://www.facebook.com/theresamakesart/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/artforanimalssketches/" target="_blank" rel="noopener">Instagram</a><a href="mailto:theresamakesart@gmail.com">Email Me</a><span class="soon">YouTube (soon)</span><span class="soon">Etsy (soon)</span></span>
 </div></footer>
 </div>
@@ -731,6 +731,13 @@ document.querySelectorAll('img[data-k]').forEach(function(i){if(IMG[i.dataset.k]
     var fail=function(){toast(val)};
     try{navigator.clipboard.writeText(val).then(done,fail)}catch(_){fail()}
   });
+})();
+/* Footer copyright year: always the visitor's current year, and it rolls over at midnight on Jan 1 even if the page is left open. */
+(function(){
+  function setYr(){var y=String(new Date().getFullYear());document.querySelectorAll('.cyr').forEach(function(e){if(e.textContent!==y)e.textContent=y})}
+  setYr();
+  setInterval(setYr,60000);
+  document.addEventListener('visibilitychange',setYr);
 })();
 
 </script>
