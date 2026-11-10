@@ -283,6 +283,7 @@ body::before{display:none}
 .p17 .form label{display:grid;gap:8px;font-size:18px;font-weight:600;letter-spacing:.02em}.p17 .form label .sub{font-size:15px;font-weight:400;line-height:1.5;color:#595959;margin-top:-4px}
 .p17 .form input:not([type=file]):not([type=checkbox]),.p17 .form select,.p17 .form textarea{font:inherit;font-weight:300;font-size:18px;padding:16px 18px;border:1.5px solid #161616;background:#fff;border-radius:0;width:100%;transition:border-color .2s,box-shadow .2s}
 .p17 .fhd{font-size:44px;font-weight:700;line-height:1.05;margin:0}.p17 .drop .opt{font-style:normal;font-size:16px;font-weight:400;color:#595959;margin-top:-4px}.p17 .stone{font-size:16px;line-height:1.5;margin:0;color:#3a3a3a}
+.p17 .form label .req{color:var(--red);margin-left:3px}.p17 .ferr{display:none;font-size:15px;font-weight:400;color:#b3141b;line-height:1.4;margin-top:-2px}.p17 .ferr:not(:empty){display:flex;gap:6px;align-items:center}.p17 .ferr:not(:empty)::before{content:"!";flex:none;width:16px;height:16px;border-radius:50%;background:#b3141b;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}.p17 .form input[aria-invalid=true]:not([type=file]):not([type=checkbox]){border-color:#b3141b;box-shadow:0 0 0 3px #b3141b26}
 .p17 .form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}.p17 .fmsg{font-size:16px;line-height:1.5;margin:0;min-height:1em}.p17 .fmsg.err{color:#b3141b}.p17 .fmsg.ok{font-size:19px}
 .p17 .form select:invalid{color:#757575}.p17 .form select option{color:#161616}
 .p17 .form input:focus,.p17 .form select:focus,.p17 .form textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px #d21f2633}
@@ -326,7 +327,7 @@ body::before{display:none}
 .p17 .cause .in{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
 .p17 .cause p{font-size:20px;line-height:1.75;color:#e0e0e0}
 .p17 .cause p + p{margin-top:20px}
-.p17 .cause .win{font-size:40px;color:var(--red);margin-top:20px;display:block}
+.p17 .cause .win{font-size:40px;color:#fbfbf9;margin-top:20px;display:block}
 .p17 .gives{position:relative;height:300px;max-width:360px;margin-top:36px}
 .p17 .gi{position:absolute;display:grid;justify-items:center;transform:rotate(var(--r));animation:p17bob 5s ease-in-out var(--d) infinite}
 .p17 .gi svg{width:84px;height:84px;color:#fbfbf9;stroke-width:2.2}
@@ -550,7 +551,7 @@ body::before{display:none}
     <div class="pref"><b>Other ways to get in touch</b><a href="mailto:theresamakesart@gmail.com"><svg class="ic"><use href="#mail17"/></svg>theresamakesart@gmail.com</a><a href="tel:+13128109670"><svg class="ic"><use href="#tel17"/></svg>(312) 810-9670</a></div></div>
   <form class="form" id="p17form" novalidate>
     <h3 class="am fhd">Request a Portrait or Ask a Question</h3>
-    <div class="two"><label>Your Name<input type="text" name="name" required autocomplete="name" placeholder="Full name"></label><label>Email<input type="email" name="email" required autocomplete="email" placeholder="you@email.com"></label></div>
+    <div class="two"><label><span>Your Name<span class="req" aria-hidden="true">*</span></span><input type="text" name="name" required autocomplete="name" placeholder="Full name" aria-describedby="p17e-name"><span class="ferr" id="p17e-name"></span></label><label><span>Email<span class="req" aria-hidden="true">*</span></span><input type="email" name="email" required autocomplete="email" placeholder="you@email.com" aria-describedby="p17e-email"><span class="ferr" id="p17e-email"></span></label></div>
     <div class="two"><label>Pet’s Name(s)<input type="text" name="pet" placeholder="Example: Spot"></label><label>Size<select id="p17size" name="size" required><option value="" disabled selected>Please select</option><option>8x10” · $100</option><option>14.75x17” · $150</option><option>18x24” · $200</option><option>Custom quote</option></select></label></div>
     <label>Where should the donation go?<select id="p17char" name="charity" required><option value="" disabled selected>Please select</option><option>Animal organization of artist’s choice</option><option>I’ll decide later</option><option>PAWS Chicago</option><option>CPR K9 Fund</option><option>Other animal organization</option></select></label>
     <label class="org" id="p17charx" hidden>Which organization would you like to support?<input type="text" name="charityOther" placeholder="Organization name"></label>
@@ -639,12 +640,15 @@ document.querySelectorAll('img[data-k]').forEach(function(i){if(IMG[i.dataset.k]
   /* Request form: paste the Google Apps Script web app URL here to make it live. */
   var FORM_URL='https://script.google.com/macros/s/AKfycbw7r1ciUzlCzAC_174wQT58nNO9c1H_VrI0WdUDewO5RQRsX_COvtSKJVmLq1kB6af2xA/exec';
   var fm=document.getElementById('p17form'),msg=document.getElementById('p17fmsg'),send=document.getElementById('p17send');
+  function fieldErr(k,m){var el=fm.elements[k],e=document.getElementById('p17e-'+k);if(!el||!e)return;e.textContent=m;if(m)el.setAttribute('aria-invalid','true');else el.removeAttribute('aria-invalid')}
+  if(fm)['name','email'].forEach(function(k){var el=fm.elements[k];el.addEventListener('input',function(){if(el.getAttribute('aria-invalid'))fieldErr(k,'')});el.addEventListener('blur',function(){if(k==='email'&&el.value.trim()&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value.trim()))fieldErr(k,'Please check your email address.')})});
   function say(t,c){msg.textContent=t;msg.className='fmsg'+(c?' '+c:'')}
   function shrink(file){return new Promise(function(res){var r=new FileReader();r.onload=function(){var img=new Image();img.onload=function(){var M=3000,w=img.width,h=img.height,k=Math.min(1,M/Math.max(w,h));var c=document.createElement('canvas');c.width=Math.round(w*k);c.height=Math.round(h*k);c.getContext('2d').drawImage(img,0,0,c.width,c.height);res({name:file.name.replace(/\.[^.]+$/,'')+'.jpg',type:'image/jpeg',data:c.toDataURL('image/jpeg',.9)})};img.onerror=function(){res({name:file.name,type:file.type,data:r.result})};img.src=r.result};r.readAsDataURL(file)})}
   if(fm)fm.addEventListener('submit',function(e){e.preventDefault();
     var g=function(n){var el=fm.elements[n];return el?(el.type==='checkbox'?el.checked:el.value.trim()):''};
-    if(!g('name')||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(g('email'))){say('Please add your name and a valid email.','err');return}
-    if(!g('size')||!g('charity')){say('Please choose a size and where the donation should go.','err');return}
+    var errs={name:!g('name')?'Please enter your name.':'',email:!g('email')?'Please enter your email.':(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(g('email'))?'Please check your email address.':'')},first=null;
+    Object.keys(errs).forEach(function(k){fieldErr(k,errs[k]);if(errs[k]&&!first)first=fm.elements[k]});
+    if(first){say('');first.focus();return}
     if(!FORM_URL){say('This preview doesn’t send requests yet. Please email theresamakesart@gmail.com.','err');return}
     send.disabled=true;say('Submitting your portrait request…');
     Promise.all([].slice.call(f.files,0,10).map(shrink)).then(function(ph){
