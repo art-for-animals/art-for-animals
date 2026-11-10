@@ -633,7 +633,7 @@ document.querySelectorAll('img[data-k]').forEach(function(i){if(IMG[i.dataset.k]
   document.querySelectorAll('#p17 .sizes .sz').forEach(function(a){a.addEventListener('click',function(){if(!sz)return;sz.selectedIndex=+a.getAttribute('data-size')+1;sz.classList.remove('flash');void sz.offsetWidth;sz.classList.add('flash')})});
   var f=document.getElementById('p17files'),fl=document.getElementById('p17fl');
   /* Request form: paste the Google Apps Script web app URL here to make it live. */
-  var FORM_URL='';
+  var FORM_URL='https://script.google.com/macros/s/AKfycbw7r1ciUzlCzAC_174wQT58nNO9c1H_VrI0WdUDewO5RQRsX_COvtSKJVmLq1kB6af2xA/exec';
   var fm=document.getElementById('p17form'),msg=document.getElementById('p17fmsg'),send=document.getElementById('p17send');
   function say(t,c){msg.textContent=t;msg.className='fmsg'+(c?' '+c:'')}
   function shrink(file){return new Promise(function(res){var r=new FileReader();r.onload=function(){var img=new Image();img.onload=function(){var M=3000,w=img.width,h=img.height,k=Math.min(1,M/Math.max(w,h));var c=document.createElement('canvas');c.width=Math.round(w*k);c.height=Math.round(h*k);c.getContext('2d').drawImage(img,0,0,c.width,c.height);res({name:file.name.replace(/\.[^.]+$/,'')+'.jpg',type:'image/jpeg',data:c.toDataURL('image/jpeg',.9)})};img.onerror=function(){res({name:file.name,type:file.type,data:r.result})};img.src=r.result};r.readAsDataURL(file)})}
