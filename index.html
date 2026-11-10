@@ -310,7 +310,7 @@ body::before{display:none}
 .p17 .form .btn{justify-self:start;font-size:16px;padding:18px 36px}
 .p17 .form .mock{font-size:13px;color:#595959}
 /* receive */
-.p17 .gets{background:#f1f0ec}
+.p17 .gets{background:#161616;color:#fbfbf9}
 .p17 .gets{padding:0}.p17 .gets .in{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;max-width:none;padding:0}
 .p17 .gets .in > div{padding:100px max(24px,calc((100vw - 1200px)/2 + 24px)) 100px 72px;align-self:center}
 .p17 .giftimg{width:100%;height:100%;min-height:620px;object-fit:cover;display:block}
@@ -334,15 +334,15 @@ body::before{display:none}
 .p17 .recs{list-style:none;margin:56px auto 0;padding:0;max-width:820px;display:grid;grid-template-columns:1fr 1fr;column-gap:56px}.p17 .recs li{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #16161620;font-size:19px;cursor:default}.p17 .recs li .ic{width:26px;height:26px;flex:none;color:var(--red)}.p17 .recs li[data-ph]{color:#8a8a8a}.p17 .recsee{margin-top:22px;font-size:18px}.p17 .recp{text-align:left;color:#161616;background:#fbfbf9;border:0;padding:48px 48px 40px;width:min(720px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow:auto;box-shadow:0 30px 80px -20px #000a}.p17 .recp::backdrop{background:#161616cc}.p17 .recp .recx{position:absolute;top:10px;right:12px;width:44px;height:44px;border:0;background:none;font-size:34px;line-height:1;color:#161616;cursor:pointer}.p17 .recp .recx:hover,.p17 .recp .recx:focus-visible{color:var(--red)}body.p17lock{overflow:hidden}.p17 .recp h3{font-size:44px;font-weight:700;line-height:1}.p17 .recp .intro{margin-top:14px;font-size:17px;line-height:1.6;text-align:left;max-width:none;color:#161616}.p17 .recp .recs{margin:20px 0 0;max-width:none;grid-template-columns:1fr}.p17 .recs li.andmore{font-weight:400}.p17 .recbtn{background:none;padding:0 0 2px;border-top:0;border-left:0;border-right:0;font:inherit;font-size:18px;color:inherit;cursor:pointer}
 .p17 .recnote{text-align:center;margin-top:48px;font-size:18px}
 /* cause */
-.p17 .cause{background:#161616;color:#fbfbf9}
+.p17 .cause{background:#fbfbf9;color:#161616}
 .p17 .cause .in{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
-.p17 .cause p{font-size:20px;line-height:1.75;color:#e0e0e0}
+.p17 .cause p{font-size:20px;line-height:1.75;color:#2b2b2b}
 .p17 .cause p + p{margin-top:20px}
-.p17 .cause .win{font-size:40px;color:#fbfbf9;margin-top:20px;display:block}
+.p17 .cause .win{font-size:40px;color:#161616;margin-top:20px;display:block}
 .p17 .gives{position:relative;height:300px;max-width:360px;margin-top:36px}
 .p17 .gi{position:absolute;display:grid;justify-items:center;transform:rotate(var(--r));animation:p17bob 5s ease-in-out var(--d) infinite}
-.p17 .gi svg{width:84px;height:84px;color:#fbfbf9;stroke-width:2.2}
-.p17 .gi .hand{font-size:28px;color:#fbfbf9;margin-top:2px}
+.p17 .gi svg{width:84px;height:84px;color:#161616;stroke-width:2.2}
+.p17 .gi .hand{font-size:28px;color:#161616;margin-top:2px}
 /* story */
 .p17 .story{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
 .p17 .story .me{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.05);position:sticky;top:calc(var(--top) + 100px)}
@@ -499,17 +499,6 @@ body::before{display:none}
   <p class="wallft"><a class="ul" style="font-size:18px">See all portraits</a></p>
 </div></section>
 
-<section class="sec gets"><div class="in">
-  <img class="giftimg" data-k="gift" alt="Thank-you card, rolled portrait tied with red ribbon, and a gift bag with dog-shaped chocolates">
-  <div><h2 class="am">What you receive</h2>
-    <div class="list">
-      <div><svg class="ic"><use href="#pen17"/></svg><span><b>Your Pet Portrait</b><br>drawn by hand on recycled, acid-free paper</span></div>
-      <div><svg class="ic"><use href="#card17"/></svg><span><b>Official Donor Card</b><br>with your name, date of donation, and the organization that your gift helped</span></div>
-      <div><svg class="ic"><use href="#gift17"/></svg><span><b>A Small Gift</b><br>if you currently have pets at home</span></div>
-    </div>
-  </div>
-</div></section>
-
 <section class="impact" id="impact"><div class="in">
   <div class="heart" id="p17heart">
     <svg viewBox="0 0 100 92" aria-label="This year: 76% of the $1,000 goal">
@@ -545,6 +534,17 @@ body::before{display:none}
     <a class="sz cq" href="#p17form" data-size="3"><i style="width:180px;height:240px"><svg class="ic"><use href="#paw17"/></svg></i><b class="am">Custom quote</b><span>Multiple animals or unlisted size</span><em class="pick">Ask for a quote</em></a>
   </div>
   <p class="ctr pay"><b>Payment types accepted:</b> Credit card, Zelle, Venmo, PayPal, Apple Cash or cash.</p>
+</div></section>
+
+<section class="sec gets"><div class="in">
+  <img class="giftimg" data-k="gift" alt="Thank-you card, rolled portrait tied with red ribbon, and a gift bag with dog-shaped chocolates">
+  <div><h2 class="am">What you receive</h2>
+    <div class="list">
+      <div><svg class="ic"><use href="#pen17"/></svg><span><b>Your Pet Portrait</b><br>drawn by hand on recycled, acid-free paper</span></div>
+      <div><svg class="ic"><use href="#card17"/></svg><span><b>Official Donor Card</b><br>with your name, date of donation, and the organization that your gift helped</span></div>
+      <div><svg class="ic"><use href="#gift17"/></svg><span><b>A Small Gift</b><br>if you currently have pets at home</span></div>
+    </div>
+  </div>
 </div></section>
 
 <section class="sec cause"><div class="in">
