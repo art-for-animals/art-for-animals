@@ -282,6 +282,7 @@ body::before{display:none}
 .p17 .form{background:#fbfbf9;color:#161616;padding:44px;display:grid;gap:22px}
 .p17 .form label{display:grid;gap:8px;font-size:18px;font-weight:600;letter-spacing:.02em}.p17 .form label .sub{font-size:15px;font-weight:400;line-height:1.5;color:#595959;margin-top:-4px}
 .p17 .form input:not([type=file]):not([type=checkbox]),.p17 .form select,.p17 .form textarea{font:inherit;font-weight:300;font-size:18px;padding:16px 18px;border:1.5px solid #161616;background:#fff;border-radius:0;width:100%;transition:border-color .2s,box-shadow .2s}
+.p17 .fhd{font-size:44px;font-weight:700;line-height:1.05;margin:0}.p17 .drop .opt{font-style:normal;font-size:16px;font-weight:400;color:#595959;margin-top:-4px}.p17 .stone{font-size:16px;line-height:1.5;margin:0;color:#3a3a3a}
 .p17 .form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}.p17 .fmsg{font-size:16px;line-height:1.5;margin:0;min-height:1em}.p17 .fmsg.err{color:#b3141b}.p17 .fmsg.ok{font-size:19px}
 .p17 .form select:invalid{color:#757575}.p17 .form select option{color:#161616}
 .p17 .form input:focus,.p17 .form select:focus,.p17 .form textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px #d21f2633}
@@ -548,15 +549,17 @@ body::before{display:none}
   <div class="side"><span class="lbl">Request a portrait</span><h2 class="am" style="margin-top:10px">Let’s get started!</h2><p>I’d love to work with you to honor your pet. I’m here for any questions and to talk you through the process.</p><p>50% down is due once we’ve finalized your portrait details. 50% + shipping cost (if applicable) is due upon completion.</p><p>Mediums such as watercolor, ink, acrylic, oil, and more are also available. These are considered custom requests, and the price will change depending on the medium of your choice.</p>
     <div class="pref"><b>Other ways to get in touch</b><a href="mailto:theresamakesart@gmail.com"><svg class="ic"><use href="#mail17"/></svg>theresamakesart@gmail.com</a><a href="tel:+13128109670"><svg class="ic"><use href="#tel17"/></svg>(312) 810-9670</a></div></div>
   <form class="form" id="p17form" novalidate>
+    <h3 class="am fhd">Request a Portrait or Ask a Question</h3>
     <div class="two"><label>Your Name<input type="text" name="name" required autocomplete="name" placeholder="Full name"></label><label>Email<input type="email" name="email" required autocomplete="email" placeholder="you@email.com"></label></div>
     <div class="two"><label>Pet’s Name(s)<input type="text" name="pet" placeholder="Example: Spot"></label><label>Size<select id="p17size" name="size" required><option value="" disabled selected>Please select</option><option>8x10” · $100</option><option>14.75x17” · $150</option><option>18x24” · $200</option><option>Custom quote</option></select></label></div>
     <label>Where should the donation go?<select id="p17char" name="charity" required><option value="" disabled selected>Please select</option><option>Animal organization of artist’s choice</option><option>I’ll decide later</option><option>PAWS Chicago</option><option>CPR K9 Fund</option><option>Other animal organization</option></select></label>
     <label class="org" id="p17charx" hidden>Which organization would you like to support?<input type="text" name="charityOther" placeholder="Organization name"></label>
     <label>What else would you like to share?<span class="sub">Things like your pet’s personality traits, a favorite memory, if in memorial for a pet who’s passed, if this is a gift…</span><textarea rows="4" name="message" placeholder="Enter message"></textarea></label>
-    <label class="drop"><input type="file" accept="image/*" multiple id="p17files"><svg class="ic"><use href="#cam17"/></svg><b class="am">Add photos of your pet</b><span>Drag photos here or tap to choose. Clear, well-lit photos work best.</span><span class="files" id="p17fl"></span></label>
+    <label class="drop"><input type="file" accept="image/*" multiple id="p17files"><svg class="ic"><use href="#cam17"/></svg><b class="am">Add photos of your pet</b><em class="opt">(optional)</em><span>Drag photos here or tap to choose. Clear, well-lit photos work best.</span><span class="files" id="p17fl"></span></label>
     <label class="chk"><input type="checkbox" id="p17resc" name="rescue"> I’m an animal rescue employee or volunteer (10% off)</label>
     <label class="org" id="p17org" hidden>Which organization do you work with?<input type="text" name="rescueOrg" placeholder="Organization name"></label>
     <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+    <p class="stone">By submitting a request, nothing is written in stone. We can chat first if you’d like.</p>
     <button class="btn red" type="submit" id="p17send">SEND REQUEST</button>
     <p class="fmsg" id="p17fmsg" role="status" aria-live="polite"></p>
   </form>
@@ -642,7 +645,6 @@ document.querySelectorAll('img[data-k]').forEach(function(i){if(IMG[i.dataset.k]
     var g=function(n){var el=fm.elements[n];return el?(el.type==='checkbox'?el.checked:el.value.trim()):''};
     if(!g('name')||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(g('email'))){say('Please add your name and a valid email.','err');return}
     if(!g('size')||!g('charity')){say('Please choose a size and where the donation should go.','err');return}
-    if(!f.files.length){say('Please add at least one photo of your pet.','err');return}
     if(!FORM_URL){say('This preview doesn’t send requests yet. Please email theresamakesart@gmail.com.','err');return}
     send.disabled=true;say('Submitting your portrait request…');
     Promise.all([].slice.call(f.files,0,10).map(shrink)).then(function(ph){
