@@ -60,7 +60,7 @@ body::before{display:none}
 .p17 a{cursor:pointer;transition:color .2s,background-color .2s,border-color .2s,transform .2s,box-shadow .2s}
 .p17 .lbl{font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:400}
 /* buttons + hover states */
-.p17 .btn{display:inline-block;background:#161616;color:#fbfbf9;padding:15px 30px;font-weight:600;font-size:15px;letter-spacing:.08em;border:0;font-family:inherit;cursor:pointer;transition:background-color .2s,transform .2s,box-shadow .2s}
+.p17 .btn{--py:15px;--px:30px;display:inline-block;text-align:center;background:#161616;color:#fbfbf9;padding:calc(var(--py) + .15em) var(--px) calc(var(--py) - .15em) calc(var(--px) + .08em);font-weight:600;font-size:15px;letter-spacing:.08em;border:0;font-family:inherit;cursor:pointer;transition:background-color .2s,transform .2s,box-shadow .2s}
 .p17 .btn:hover,.p17.hov .btn{background:var(--red);transform:translateY(-2px);box-shadow:0 8px 16px -8px #d21f2699}
 .p17 .btn.red{background:var(--red);color:#fff}
 .p17 .btn.red:hover,.p17.hov .btn.red{background:#161616;box-shadow:0 8px 16px -8px #0008}
@@ -169,7 +169,7 @@ body::before{display:none}
 .p17 .note{position:absolute;z-index:2;left:44.2%;top:-132px;color:var(--red);font-size:28px;line-height:1.05;transform:rotate(4deg);display:block;white-space:nowrap;text-align:left}
 .p17 .note svg{position:absolute;left:204px;top:56px;width:34px;height:80px;stroke-width:2;transform:rotate(-4deg)}
 /* impact */
-.p17 .impact{padding-block:110px;border-top:1px solid #16161622}
+.p17 .impact{padding-block:110px}
 .p17 .impact .in{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center}
 .p17 .heart{position:relative;width:100%;max-width:600px;justify-self:center}
 .p17 .heart svg{width:100%;height:auto;display:block;overflow:visible}
@@ -307,7 +307,7 @@ body::before{display:none}
 .p17 .form .chk{display:flex;gap:14px;align-items:center;font-weight:400;font-size:19px;cursor:pointer}
 .p17 .form .chk input{width:24px;height:24px;accent-color:#d21f26;flex:none}
 .p17 .form .org[hidden]{display:none!important}
-.p17 .form .btn{justify-self:start;font-size:16px;padding:18px 36px}
+.p17 .form .btn{justify-self:start;font-size:16px;--py:18px;--px:36px;padding-top:calc(var(--py) + .06em);padding-bottom:calc(var(--py) - .06em)}
 .p17 .form .mock{font-size:13px;color:#595959}
 /* receive */
 .p17 .gets{background:#161616;color:#fbfbf9}
@@ -382,7 +382,7 @@ body::before{display:none}
 .pg.p17 .page-hidden{display:none}
 @media (max-width:760px){.p17 .burger{display:flex}.p17 .nav .btn.red{margin-left:auto}
 
-.p17 .logo{font-size:24px;gap:8px}.p17 .logo .lg{width:32px;height:32px}.p17 .navbar .btn{padding:11px 18px;font-size:13px}
+.p17 .logo{font-size:24px;gap:8px}.p17 .logo .lg{width:32px;height:32px}.p17 .navbar .btn{--py:11px;--px:18px;font-size:13px}
 .p17 .hero{grid-template-columns:1fr;min-height:0;padding-top:24px;padding-bottom:20px}
 .p17 .dusk::before{--sx:50%}.p17 .hero .copy{display:contents}.p17 .hero h1{order:1;grid-column:1}.p17 .hero .art{order:2;grid-column:1;grid-row:auto;width:100%;max-width:none;margin:150px 0 0;justify-self:stretch}.p17 .hero .copy > p{order:3;grid-column:1;margin-top:8px}.p17 .hero .acts{order:4;grid-column:1}.p17 .hero.play[data-rv=words] h1,.p17 .hero.play[data-rv=words] .copy > p,.p17 .hero.play[data-rv=words] .acts{z-index:17}
 .p17 .ai{position:relative}
