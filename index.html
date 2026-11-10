@@ -644,7 +644,7 @@ document.querySelectorAll('img[data-k]').forEach(function(i){if(IMG[i.dataset.k]
     if(!g('size')||!g('charity')){say('Please choose a size and where the donation should go.','err');return}
     if(!f.files.length){say('Please add at least one photo of your pet.','err');return}
     if(!FORM_URL){say('This preview doesn’t send requests yet. Please email theresamakesart@gmail.com.','err');return}
-    send.disabled=true;say('Sending your photos…');
+    send.disabled=true;say('Submitting your portrait request…');
     Promise.all([].slice.call(f.files,0,10).map(shrink)).then(function(ph){
       var d={name:g('name'),email:g('email'),pet:g('pet'),size:g('size'),charity:g('charity'),charityOther:g('charityOther'),message:g('message'),rescue:g('rescue'),rescueOrg:g('rescueOrg'),website:g('website'),photos:ph};
       return fetch(FORM_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)}).then(function(r){return r.json()});
