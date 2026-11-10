@@ -526,7 +526,7 @@ body::before{display:none}
     <div class="trio top">
       <div><b class="am">114</b><span>portraits drawn</span></div>
       <div><b class="am">26</b><span>charities helped</span></div>
-      <div><b class="am">11</b><span>years of giving</span></div>
+      <div><b class="am yrs">11</b><span>years of giving</span></div>
     </div>
     <div class="big am">$3,240<small>donated</small></div>
     <p>Since 2015, every dollar donated came from a portrait someone loved, and went to animals who needed our help.</p>
@@ -742,9 +742,9 @@ document.querySelectorAll('img[data-k]').forEach(function(i){if(IMG[i.dataset.k]
     try{navigator.clipboard.writeText(val).then(done,fail)}catch(_){fail()}
   });
 })();
-/* Footer copyright year: always the visitor's current year, and it rolls over at midnight on Jan 1 even if the page is left open. */
+/* Footer copyright year and "years of giving" (since 2015): always the visitor's current year, and it rolls over at midnight on Jan 1 even if the page is left open. */
 (function(){
-  function setYr(){var y=String(new Date().getFullYear());document.querySelectorAll('.cyr').forEach(function(e){if(e.textContent!==y)e.textContent=y})}
+  function setYr(){var n=new Date().getFullYear(),y=String(n),g=String(n-2015);document.querySelectorAll('.cyr').forEach(function(e){if(e.textContent!==y)e.textContent=y});document.querySelectorAll('.yrs').forEach(function(e){if(e.textContent!==g)e.textContent=g})}
   setYr();
   setInterval(setYr,60000);
   document.addEventListener('visibilitychange',setYr);
