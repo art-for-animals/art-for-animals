@@ -648,7 +648,7 @@ document.querySelectorAll('img[data-k]').forEach(function(i){if(IMG[i.dataset.k]
     Promise.all([].slice.call(f.files,0,10).map(shrink)).then(function(ph){
       var d={name:g('name'),email:g('email'),pet:g('pet'),size:g('size'),charity:g('charity'),charityOther:g('charityOther'),message:g('message'),rescue:g('rescue'),rescueOrg:g('rescueOrg'),website:g('website'),photos:ph};
       return fetch(FORM_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)}).then(function(r){return r.json()});
-    }).then(function(j){if(j&&j.ok){fm.reset();fl.textContent='';if(chx)chx.hidden=true;org.hidden=true;say('Thank you! Your request is on its way. I’ll be in touch soon.','ok')}else throw new Error(j&&j.error)})
+    }).then(function(j){if(j&&j.ok){fm.reset();fl.textContent='';if(chx)chx.hidden=true;org.hidden=true;say('Thank you! Your request has been sent. I’ll be in touch to discuss your portrait.','ok')}else throw new Error(j&&j.error)})
     .catch(function(err){say((err&&err.message)||'Something went wrong. Please email theresamakesart@gmail.com.','err')})
     .then(function(){send.disabled=false});
   });
