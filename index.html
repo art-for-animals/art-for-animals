@@ -424,6 +424,14 @@ body::before{display:none}
 .p17 #how{padding-top:60px}
 @media (max-width:760px){.p17 #how{padding-top:70px}}
 .p17 .lb img,.p17 .allit img{filter:grayscale(1)}
+@media (max-width:760px){
+.p17 .steps{gap:30px;margin-top:32px;text-align:left}
+.p17 .steps > div{grid-template-columns:auto 1fr;justify-items:start;align-items:center;column-gap:14px;row-gap:6px}
+.p17 .steps svg{width:46px;height:46px}
+.p17 .steps .am{font-size:34px;margin:0;line-height:1}
+.p17 .steps p{grid-column:1/-1;max-width:none;margin:4px 0 6px;font-size:17px;line-height:1.6}
+.p17 .steps .lnk{grid-column:1/-1}
+}
 </style>
 <script>try{if(localStorage.getItem('afaSeen')==='1')document.documentElement.classList.add('afa-seen')}catch(e){}</script>
 <div class="pg p17" id="p17">
